@@ -7,6 +7,9 @@ export class Contacts extends Component {
     return (
       <div className={css.contacts}>
         <h2>Contacts</h2>
+
+        <input type="text" onChange={this.props.onFilter} />
+
         <ul>
           {contacts.map(contact => (
             <li key={contact.id}>
