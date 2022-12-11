@@ -3,6 +3,7 @@ import { Phonebook } from './Phonebook/Phonebook';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export class App extends Component {
   state = {
@@ -17,6 +18,15 @@ export class App extends Component {
   };
 
   addContact = (id, name, number) => {
+    const findContact = this.state.contacts.find(
+      contact => contact.name === name
+    );
+    console.log(findContact);
+
+    if (findContact) {
+      Notify.failure(`${name} is alredy in contacts`);
+      return;
+    }
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { id: id, name: name, number: number }],
     }));
