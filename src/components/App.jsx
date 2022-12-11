@@ -26,14 +26,14 @@ export class App extends Component {
   };
 
   render() {
-    const filteredContact = this.state.contacts.filter(contact =>
-      contact.name.includes(this.state.filter)
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
     return (
       <div className={css.phonebook}>
         <h1>Phonebook</h1>
         <Phonebook addContact={this.addContact} />
-        <Contacts contacts={filteredContact} onFilter={this.onFilter} />
+        <Contacts contacts={filteredContacts} onFilter={this.onFilter} />
       </div>
     );
   }
