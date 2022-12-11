@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Phonebook } from './Phonebook/Phonebook';
 import { Contacts } from './Contacts/Contacts';
+import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 
 export class App extends Component {
@@ -25,6 +26,12 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  onDelete = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     const filteredContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
@@ -33,7 +40,9 @@ export class App extends Component {
       <div className={css.phonebook}>
         <h1>Phonebook</h1>
         <Phonebook addContact={this.addContact} />
-        <Contacts contacts={filteredContacts} onFilter={this.onFilter} />
+        <Contacts contacts={filteredContacts} handleDelete={this.onDelete}>
+          <Filter onFilter={this.onFilter} />
+        </Contacts>
       </div>
     );
   }
