@@ -1,18 +1,30 @@
 .form {
   display: flex;
-  flex-direction: column;
-  padding: 30px 0;
+    flex-direction: column;
+    padding: 30px 15px;
+    box-shadow: 2px 1px 14px 0px grey;
+    border: 1px solid grey;
+    border-radius: 2px;
+
 }
 .field {
   width: 200px;
-  height: 20px;
+  height: 25px;
   margin-bottom: 25px;
 }
 .form button {
-  width: 150px;
+  width: 104px;
+  height: 35px;
+  font-size: 16px;
+  color: white;
+  background-color: #2586e7;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 .inputLabel {
   font-weight: 500;
   margin-bottom: 10px;
   margin-top: 0;
+  color: #084684;
 }
