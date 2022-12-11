@@ -10,7 +10,7 @@
 .field {
   width: 200px;
   height: 25px;
-  margin-bottom: 25px;
+ 
 }
 .form button {
   width: 104px;
@@ -21,10 +21,15 @@
   outline: none;
   border: none;
   cursor: pointer;
+  margin-top: 20px;
 }
 .inputLabel {
   font-weight: 500;
   margin-bottom: 10px;
-  margin-top: 0;
+  margin-top: 20px;
   color: #084684;
+}
+.errorMessage{
+  margin-top: 5px;
+  color: rgb(198, 37, 37);
 }
