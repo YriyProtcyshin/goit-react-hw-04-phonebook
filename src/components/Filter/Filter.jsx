@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types" 
 
 export function Filter({onFilter}){
     return (
@@ -7,4 +7,8 @@ export function Filter({onFilter}){
         <input type="text" onChange={onFilter} />
         </>        
     )
+}
+
+Filter.propTypes = {
+    onFilter: PropTypes.func
 }

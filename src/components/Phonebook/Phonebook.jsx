@@ -10,7 +10,7 @@ const initialValues = {
   number: '',
 };
 
-let schema = yup.object().shape({
+const schema = yup.object().shape({
   name: yup.string().required(),
   number: yup.number().integer().positive().required()
 })

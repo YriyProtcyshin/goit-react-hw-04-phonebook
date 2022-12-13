@@ -20,8 +20,7 @@ export class App extends Component {
   addContact = (id, name, number) => {
     const findContact = this.state.contacts.find(
       contact => contact.name === name
-    );
-    console.log(findContact);
+    );   
 
     if (findContact) {
       Notify.failure(`${name} is alredy in contacts`);
