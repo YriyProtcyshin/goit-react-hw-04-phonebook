@@ -5,6 +5,8 @@ import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+const LS_KEY = "local_stoge_contacts"
+
 export class App extends Component {
   state = {
     contacts: [
@@ -16,7 +18,21 @@ export class App extends Component {
     name: '',
     filter: '',
   };
+  componentDidMount(){
+    if (localStorage.getItem(LS_KEY)){
+      this.setState({
+        contacts: JSON.parse(localStorage.getItem(LS_KEY))
+      })
+    }
+  }
 
+  componentDidUpdate(prevProps, prevState){
+    if (prevState.contacts !== !this.state.contacts){
+      
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts))
+    }
+  }
+  
   addContact = (id, name, number) => {
     const findContact = this.state.contacts.find(
       contact => contact.name === name
@@ -26,6 +42,12 @@ export class App extends Component {
       Notify.failure(`${name} is alredy in contacts`);
       return;
     }
+  
+    number = number.split('')
+    number.splice(3,0,"-")
+    number.splice(6,0,"-")
+    number = number.join('')    
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { id: id, name: name, number: number }],
     }));
